@@ -9,7 +9,6 @@ import (
 
 	"github.com/int128/oauth2cli"
 	"github.com/int128/oauth2cli/oauth2params"
-	"github.com/pkg/browser"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
 	"golang.org/x/sync/errgroup"
@@ -81,9 +80,9 @@ Then set the following options:`)
 		select {
 		case url := <-ready:
 			log.Printf("Open %s", url)
-			if err := browser.OpenURL(url); err != nil {
-				log.Printf("could not open the browser: %s", err)
-			}
+			// if err := browser.OpenURL(url); err != nil {
+			// 	log.Printf("could not open the browser: %s", err)
+			// }
 			return nil
 		case err := <-ctx.Done():
 			return xerrors.Errorf("context done while waiting for authorization: %w", err)
