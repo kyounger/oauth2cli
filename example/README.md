@@ -29,3 +29,9 @@ You can set a certificate and key for the local server.
 ./example -client-id xxx.apps.googleusercontent.com -client-secret xxxxxxxx \
   -local-server-cert ../e2e_test/testdata/cert.pem -local-server-key ../e2e_test/testdata/cert-key.pem
 ```
+
+Create a simple self-signed key and cert for localhost (to avoid issue of process failing redirection url because of lack of tls on localhost):
+
+```sh
+openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 -nodes -keyout example.key -out example.crt -subj "/CN=localhost"
+```
